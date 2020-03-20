@@ -51,11 +51,18 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
+          "Port": 9003
+        },
+        {
+          "Host": "localhost",
           "Port": 9002
         }
       ],
       "UpstreamPathTemplate": "/product",
-      "UpstreamHttpMethod": [ "Get" ]
+      "UpstreamHttpMethod": [ "Get" ],
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      }
       //,
       //"QoSOptions": {
       //  "ExceptionsAllowedBeforeBreaking": 3,
@@ -63,8 +70,5 @@
       //  "TimeoutValue": 5000
       //}
     }
-  ],
-  "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:9000"
-  } 
+  ]
 }

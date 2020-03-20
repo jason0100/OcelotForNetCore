@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Product.Controllers
+namespace ProductService1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -14,7 +14,7 @@ namespace Product.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "Surface Book 2", "Mac Book Pro" };
+            return new string[] { $"Surface Book 2", "Mac Book Pro, ProductService1" };
         }
     }
 }

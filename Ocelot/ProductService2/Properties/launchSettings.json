@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:9002",
+      "applicationUrl": "http://localhost:9003",
       "sslPort": 0
     }
   },
@@ -11,12 +11,13 @@
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
+      "launchBrowser": true,
       "launchUrl": "weatherforecast",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Product": {
+    "ProductService2": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "weatherforecast",

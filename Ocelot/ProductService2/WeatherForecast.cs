@@ -1,6 +1,6 @@
 using System;
 
-namespace APIGateway
+namespace ProductService2
 {
     public class WeatherForecast
     {
