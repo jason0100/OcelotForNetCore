@@ -20,22 +20,36 @@ namespace GateWay
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            new WebHostBuilder()
+            .UseKestrel()
+            .UseContentRoot(Directory.GetCurrentDirectory())
+            .ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                config
+                    //.SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
+                    .AddJsonFile("appsettings.json", true, true)
+                    //.AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
+                    .AddJsonFile("ocelot.json")
+                    .AddEnvironmentVariables();
+            })
+            .ConfigureServices(s => {
+                s.AddOcelot();
+                   //.AddCacheManager(x =>
+                   // {
+                   //     x.WithDictionaryHandle();
+                   // });
+            })
+            .ConfigureLogging((hostingContext, logging) =>
+            {
+                   //add your logging
+               })
+            .UseIISIntegration()
+            .Configure(app =>
+            {
+                app.UseOcelot().Wait();
+            })
+            .Build()
+            .Run();
         }
-
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-              .ConfigureAppConfiguration((hostContext, config) =>
-              {
-                  var env = hostContext.HostingEnvironment;
-                  config.AddJsonFile(path: "appsettings.json", optional: false, reloadOnChange: true)
-                       .AddJsonFile(path: $"appsettings.{env.EnvironmentName}.json", optional: false, reloadOnChange: true)
-                        .AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
-
-              })
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
     }
 }

@@ -14,7 +14,7 @@ namespace ProductService1.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { $"Surface Book 2", "Mac Book Pro, ProductService1" };
+            return new string[] { $"'Surface Book 2', 'Mac Book Pro', {DateTime.Now.ToString()}" };
         }
     }
 }

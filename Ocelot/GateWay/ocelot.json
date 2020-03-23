@@ -11,21 +11,19 @@
       ],
       "UpstreamPathTemplate": "/customer",
       "UpstreamHttpMethod": [ "Get" ],
+      //"UseServiceDiscovery": true,
       "RateLimitOptions": {
-        "ClientWhiteList": [
-          
-        ],
+        
         "EnableRateLimiting": true,
         "Period": "1m",
         "PeriodTimespan": 30,
-        "Limit": 2
+        "Limit": 20
+      },
+      " FileCacheOptions ": {
+        " TtlSeconds ": 3,
+        "Region": "somename"
       }
-      //,
-      //"QoSOptions": {
-      //  "ExceptionsAllowedBeforeBreaking": 3,
-      //  "DurationOfBreak": 10,
-      //  "TimeoutValue": 5000
-      //}
+
     },
     {
       "DownstreamPathTemplate": "/api/customer/{id}",
@@ -38,37 +36,19 @@
       ],
       "UpstreamPathTemplate": "/customers/{id}",
       "UpstreamHttpMethod": [ "Get" ]
-      //,
-      //"QoSOptions": {
-      //  "ExceptionsAllowedBeforeBreaking": 3,
-      //  "DurationOfBreak": 10,
-      //  "TimeoutValue": 5000
-      //}
-    },
-    {
-      "DownstreamPathTemplate": "/api/product",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 9003
-        },
-        {
-          "Host": "localhost",
-          "Port": 9002
-        }
-      ],
-      "UpstreamPathTemplate": "/product",
-      "UpstreamHttpMethod": [ "Get" ],
-      "LoadBalancerOptions": {
-        "Type": "LeastConnection"
-      }
-      //,
-      //"QoSOptions": {
-      //  "ExceptionsAllowedBeforeBreaking": 3,
-      //  "DurationOfBreak": 10,
-      //  "TimeoutValue": 5000
-      //}
+
     }
-  ]
+  ],
+  "GlobalConfiguration": {
+    //"ServiceDiscoveryProvider": {
+    //  "Host": "localhost",
+    //  "Port": 8500
+    //}
+    //"RateLimitOptions": {
+    //  "DisableRateLimitHeaders": true,
+    //  "QuotaExceededMessage": "Stop request plz!",
+    //  "HttpStatusCode": 999,
+    //  "ClientIdHeader": "cid"
+    //}
+  }
 }

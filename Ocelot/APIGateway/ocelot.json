@@ -1,0 +1,37 @@
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 9001
+        }
+      ],
+      "UpstreamPathTemplate": "/{url}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "FileCacheOptions": {
+        "TtlSeconds": 3,
+        "Region": "somename"
+      },
+      "RateLimitOptions": {
+        "ClientWhiteList": [
+
+        ],
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 30,
+        "Limit": 10
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+    //"BaseUrl": "https://localhost:5000"
+    //"RateLimitOptions": {
+    //  "DisableRateLimitHeaders": true,
+    //  "QuotaExceededMessage": "Stop request plz!",
+    //  "HttpStatusCode": 999,
+    //  "ClientIdHeader": "cid"
+  }
+}
